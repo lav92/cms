@@ -4,22 +4,22 @@ import cms.domain.Article;
 import cms.repository.ArcticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import sun.util.calendar.LocalGregorianCalendar;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.*;
 
 @Controller
 public class MainController {
-    @Autowired
-    private ArcticleRepository arcticleRepository;
+    private final ArcticleRepository arcticleRepository;
+
+    public MainController(ArcticleRepository arcticleRepository) {
+        this.arcticleRepository = arcticleRepository;
+    }
+
     @GetMapping("/")
     public String main(Map<String, Object> model) {
         Iterable<Article> publishedArticles;
@@ -79,4 +79,13 @@ public class MainController {
         return "/newArticle";
     }
 
+    @GetMapping(value = "/{slug}")
+    public String showArticle(@PathVariable(required = false) String slug,
+                                Map<String, Object> model) {
+        Iterable<Article> articles;
+        articles = arcticleRepository.findBySlug(slug);
+
+        model.put("articles", articles);
+        return "article";
+    }
 }

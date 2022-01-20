@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Title</title>
@@ -10,25 +10,38 @@
             <h1>Нзвание статьи</h1>
         </span>
         <span>
-            <button>Главная статья</button>
+            <a href="/">Главная странца</a>
             <button>Редактировать статью</button>
             <button>Удалить статью</button>
         </span>
     </div>
 
+    <form method="post" action="title">
+        {{#articles}}
+        <div>
+            <span type="text" name="title">{{title}}</span>
+            <span>{{description}}</span>
+            <span>{{slug}}</span>
+            <span>{{menuLabel}}</span>
+            <span>{{h1}}</span>
+            <span>{{content}}</span>
+            <span>{{priority}}</span>
+            <span>{{publishedAt}}</span>
+        </div>
+        {{/articles}}
+    </form>
+
+    {{#articles2}}
     <div>
-
-        здесь будет ТЕКСТ статьи
-
+        <span type="text" name="title">{{title}}</span>
+        <span>{{description}}</span>
+        <span>{{slug}}</span>
+        <span>{{menuLabel}}</span>
+        <span>{{h1}}</span>
+        <span>{{content}}</span>
+        <span>{{priority}}</span>
+        <span>{{publishedAt}}</span>
     </div>
-
-    <div>
-        <span>
-            здесь будет ДАТА публикации
-        </span>
-        <span>
-            здесь будет ПРИОРИТЕТ публикации
-        </span>
-    </div>
+    {{/articles2}}
 </body>
 </html>

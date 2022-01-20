@@ -3,6 +3,14 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Title</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha512-Dop/vW3iOtayerlYAqCgkVr2aTr2ErwwTYOvRFUpzl2VhCMJyjQF0Q9TjUXIo6JhuM/3i0vVEt2e/7QQmnHQqw==" crossorigin="anonymous">
+    <!-- Дополнительные стили Bootstrap (не обязательно) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha512-iy8EXLW01a00b26BaqJWaCmk9fJ4PsMdgNRqV96KwMPSH+blO82OHzisF/zQbRIIi8m0PiO10dpS0QxrcXsisw==" crossorigin="anonymous">
+    <!-- jQuery (необходим для Bootstrap JS) -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha512-oBTprMeNEKCnqfuqKd6sbvFzmFQtlXS3e0C/RGFV0hD6QzhHV+ODfaQbAlmY6/q0ubbwlAM/nCJjkrgA3waLzg==" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="title">Content Management System</div>
@@ -13,33 +21,42 @@
     </div>
     <div>
     <h2>Список опубликованных статей</h2>
-        {{#publishedArticles}}
-        <div>
-            <b>{{title}}</b>
-            <span>{{description}}</span>
-            <span>{{slug}}</span>
-            <span>{{menuLabel}}</span>
-            <span>{{h1}}</span>
-            <span>{{content}}</span>
-            <span>{{priority}}</span>
-            <span>{{publishedAt}}</span>
+        <form action="/article">
+            {{#publishedArticles}}
+            <div>
+                <a href="/{{slug}}" type="text" name="title">{{title}}</a>
+                <span>{{description}}</span>
+                <span>{{slug}}</span>
+                <span>{{menuLabel}}</span>
+                <span>{{h1}}</span>
+                <span>{{content}}</span>
+                <span>{{priority}}</span>
+                <span>{{publishedAt}}</span>
+            </div>
+            {{/publishedArticles}}
+        </form>
+        <p>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Список не опубликованных статей
+            </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                {{#unpublishedArticles}}
+                <div>
+                    <a href="/{{slug}}" type="text" name="title">{{title}}</a>
+                    <span>{{description}}</span>
+                    <span>{{slug}}</span>
+                    <span>{{menuLabel}}</span>
+                    <span>{{h1}}</span>
+                    <span>{{content}}</span>
+                    <span>{{priority}}</span>
+                    <span>{{publishedAt}}</span>
+                </div>
+                {{/unpublishedArticles}}
+            </div>
         </div>
-        {{/publishedArticles}}
-        <span>
-            <h2><a href="">Список не опубликованных статей</a></h2>
-        </span>
-        {{#unpublishedArticles}}
-        <div>
-            <b>{{title}}</b>
-            <span>{{description}}</span>
-            <span>{{slug}}</span>
-            <span>{{menuLabel}}</span>
-            <span>{{h1}}</span>
-            <span>{{content}}</span>
-            <span>{{priority}}</span>
-            <span>{{publishedAt}}</span>
-        </div>
-        {{/unpublishedArticles}}
+
     </div>
 </body>
 </html>
