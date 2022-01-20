@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+    <form method="post">
+        <div>
+            <h1>Создание новой статьи</h1>
+        </div>
+        <div>
+            <span>
+                <a href="/">Главная страница</a>
+            </span>
+        </div>
+        <div>
+            <span>
+                <h3>Название статьи</h3>
+            </span>
+            <span>
+                <input type="text" name="title">
+            </span>
+        </div>
+        <div>
+            <span>
+                <h3>Описание</h3>
+            </span>
+            <span>
+                <input type="text" name="description">
+            </span>
+        </div>
+        <div>
+            <span>
+                <h3>Url</h3>
+            </span>
+            <span>
+                <input type="text" name="slug">
+            </span>
+        </div>
+        <div>
+            <span>
+                <h3>Отображение ссылки</h3>
+            </span>
+            <span>
+                <input type="text" name="menuLabel">
+            </span>
+        </div>
+        <div>
+            <span>
+                <h3>H1</h3>
+            </span>
+            <span>
+                <input type="text" name="h1">
+            </span>
+        </div>
+        <div>
+            <span>
+                <h3>Введите текст статьи</h3>
+            </span>
+            <span>
+                <textarea name="content"></textarea>
+            </span>
+        </div>
+
+        <div>
+            <span>
+                <h3>Время публицации</h3>
+            </span>
+            <span>
+                <input type="date" name="publishedAt">
+            </span>
+        </div>
+        <div>
+            <span>
+                <h3>Приоритет</h3>
+            </span>
+            <span>
+                <input type="number" name="priority">
+            </span>
+        </div>
+        <div>
+            <button type="submit">Сохранить</button>
+        </div>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+    <div class="title">Content Management System</div>
+    <div>
+        <span>
+            <a href="/newArticle">Создать статью</a>
+        </span>
+    </div>
+    <div>
+    <h2>Список опубликованных статей</h2>
+        {{#publishedArticles}}
+        <div>
+            <b>{{title}}</b>
+            <span>{{description}}</span>
+            <span>{{slug}}</span>
+            <span>{{menuLabel}}</span>
+            <span>{{h1}}</span>
+            <span>{{content}}</span>
+            <span>{{priority}}</span>
+            <span>{{publishedAt}}</span>
+        </div>
+        {{/publishedArticles}}
+        <span>
+            <h2><a href="">Список не опубликованных статей</a></h2>
+        </span>
+        {{#unpublishedArticles}}
+        <div>
+            <b>{{title}}</b>
+            <span>{{description}}</span>
+            <span>{{slug}}</span>
+            <span>{{menuLabel}}</span>
+            <span>{{h1}}</span>
+            <span>{{content}}</span>
+            <span>{{priority}}</span>
+            <span>{{publishedAt}}</span>
+        </div>
+        {{/unpublishedArticles}}
+    </div>
+</body>
+</html>
