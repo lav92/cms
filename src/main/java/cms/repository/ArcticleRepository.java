@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ArcticleRepository extends CrudRepository<Article, Integer> {
     List<Article> findBySlug(String slug);
+
 }

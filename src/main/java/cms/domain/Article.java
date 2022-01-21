@@ -9,7 +9,7 @@ import java.sql.Date;
 @Entity
 public class Article {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
     public Integer getId() {
@@ -42,6 +42,21 @@ public class Article {
     private String content;
     private int priority;
     private Date publishedAt;
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", slug='" + slug + '\'' +
+                ", menuLabel='" + menuLabel + '\'' +
+                ", h1='" + h1 + '\'' +
+                ", content='" + content + '\'' +
+                ", priority=" + priority +
+                ", publishedAt=" + publishedAt +
+                '}';
+    }
 
     public String getTitle() {
         return title;

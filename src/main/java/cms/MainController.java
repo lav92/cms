@@ -2,7 +2,7 @@ package cms;
 
 import cms.domain.Article;
 import cms.repository.ArcticleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import cms.service.ArticleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,8 +16,11 @@ import java.util.*;
 public class MainController {
     private final ArcticleRepository arcticleRepository;
 
-    public MainController(ArcticleRepository arcticleRepository) {
+    private final ArticleService articleService;
+
+    public MainController(ArcticleRepository arcticleRepository, ArticleService articleService) {
         this.arcticleRepository = arcticleRepository;
+        this.articleService = articleService;
     }
 
     @GetMapping("/")
@@ -84,8 +87,25 @@ public class MainController {
                                 Map<String, Object> model) {
         Iterable<Article> articles;
         articles = arcticleRepository.findBySlug(slug);
-
         model.put("articles", articles);
         return "article";
+    }
+
+    @GetMapping(value = "/editArticle/{slug}")
+    public String editArticle (@PathVariable(required = false) String slug,
+                               Map<String, Object> model) {
+        Iterable<Article> articles;
+        articles = arcticleRepository.findBySlug(slug);
+
+        System.out.println(articles.toString());
+
+        model.put("articles", articles);
+        return "editArticle";
+    }
+
+    @PostMapping("/editArticle/{slug}")
+    public String saveEditArticle (Article article) {
+        articleService.saveArticle(article);
+        return "redirect:/";
     }
 }
