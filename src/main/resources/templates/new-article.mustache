@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>CMS</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha512-Dop/vW3iOtayerlYAqCgkVr2aTr2ErwwTYOvRFUpzl2VhCMJyjQF0Q9TjUXIo6JhuM/3i0vVEt2e/7QQmnHQqw==" crossorigin="anonymous">
+    <!-- Дополнительные стили Bootstrap (не обязательно) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha512-iy8EXLW01a00b26BaqJWaCmk9fJ4PsMdgNRqV96KwMPSH+blO82OHzisF/zQbRIIi8m0PiO10dpS0QxrcXsisw==" crossorigin="anonymous">
+    <!-- jQuery (необходим для Bootstrap JS) -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha512-oBTprMeNEKCnqfuqKd6sbvFzmFQtlXS3e0C/RGFV0hD6QzhHV+ODfaQbAlmY6/q0ubbwlAM/nCJjkrgA3waLzg==" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesArticle.css" />
+</head>
+<body>
+<form method="post">
+    <div class="flex-container">
+        <div class="flex-item item-1">
+            <div class="table-cell"><a class="btn btn-primary" href="/">Главная страница</a></div>
+        </div>
+
+        <div class="flex-item item-11">
+            <div class="table-cell"><h1>Создание новой статьи</h1></div>
+        </div>
+
+        <div class="flex-item item-2">
+            <span class="table-cell">Title</span>
+            <span class="table-cell"><input type="text" name="title"></span>
+        </div>
+
+        <div class="flex-item item-3">
+            <span class="table-cell">Description</span>
+            <span class="table-cell"><input type="text" name="description"></span>
+        </div>
+
+        <div class="flex-item item-4">
+            <span class="table-cell">Url</span>
+            <span class="table-cell"><input type="text" name="slug"></span>
+        </div>
+
+        <div class="flex-item item-5">
+            <span class="table-cell">Menu_label</span>
+            <span class="table-cell"><input type="text" name="menuLabel"></span>
+        </div>
+
+        <div class="flex-item item-6">
+            <span class="table-cell">H1</span>
+            <span class="table-cell"><input type="text" name="h1"></span>
+        </div>
+
+        <div class="flex-item item-7">
+            <span class="table-cell">Content</span>
+            <span class="table-cell"><textarea name="content"></textarea></span>
+        </div>
+
+        <div class="flex-item item-8">
+            <span class="table-cell">Published_at</span>
+            <span class="table-cell"><input type="date" name="publishedAt"></span>
+        </div>
+
+        <div class="flex-item item-9">
+            <span class="table-cell">Приоритет</span>
+            <span class="table-cell"><input type="number" name="priority"></span>
+        </div>
+
+        <div class="flex-item item-10">
+            <span class="table-cell"><button class="btn btn-primary" type="submit">Сохранить</button></span>
+        </div>
+
+    </div>
+</form>
+
+</body>
+</html>

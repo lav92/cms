@@ -11,30 +11,19 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha512-oBTprMeNEKCnqfuqKd6sbvFzmFQtlXS3e0C/RGFV0hD6QzhHV+ODfaQbAlmY6/q0ubbwlAM/nCJjkrgA3waLzg==" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
 </head>
 <body>
-    <div class="title">Content Management System</div>
-    <div>
-        <span>
-            <a href="/newArticle">Создать статью</a>
-        </span>
+<div class="flex-container">
+    <div class="flex-item item-1">
+        <span class="cms">Content Management System</span>
+        <span class="cmsButton"><a class="btn btn-primary" href="/new-article">Создать статью</a></span>
     </div>
-    <div>
-    <h2>Список опубликованных статей</h2>
-        <form action="/article">
-            {{#publishedArticles}}
-            <div>
-                <a href="/{{slug}}" type="text" name="title">{{title}}</a>
-                <span>{{description}}</span>
-                <span>{{slug}}</span>
-                <span>{{menuLabel}}</span>
-                <span>{{h1}}</span>
-                <span>{{content}}</span>
-                <span>{{priority}}</span>
-                <span>{{publishedAt}}</span>
-            </div>
-            {{/publishedArticles}}
-        </form>
+
+    <div class="flex-item item-2">
         <p>
             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                 Список не опубликованных статей
@@ -44,19 +33,28 @@
             <div class="card card-body">
                 {{#unpublishedArticles}}
                 <div>
-                    <a href="/{{slug}}" type="text" name="title">{{title}}</a>
-                    <span>{{description}}</span>
-                    <span>{{slug}}</span>
-                    <span>{{menuLabel}}</span>
-                    <span>{{h1}}</span>
-                    <span>{{content}}</span>
-                    <span>{{priority}}</span>
-                    <span>{{publishedAt}}</span>
+                    <span><a  class="btn btn-primary" href="/{{slug}}" type="text" name="title">{{menuLabel}}</a></span>
+                    <span>Приоритет: {{priority}}</span>
                 </div>
                 {{/unpublishedArticles}}
             </div>
         </div>
-
     </div>
+
+    <div class="flex-item item-3">
+
+        <h4>Список опубликованных статей</h4>
+
+        <form action="/article">
+            {{#publishedArticles}}
+            <div>
+                <span><a id="publish" class="btn btn-primary" href="/{{slug}}" type="text" name="title">{{menuLabel}}</a></span>
+                <span>Приоритет: {{priority}}</span>
+            </div>
+            {{/publishedArticles}}
+        </form>
+    </div>
+
+</div>
 </body>
 </html>

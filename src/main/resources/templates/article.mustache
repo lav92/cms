@@ -3,45 +3,45 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Title</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha512-Dop/vW3iOtayerlYAqCgkVr2aTr2ErwwTYOvRFUpzl2VhCMJyjQF0Q9TjUXIo6JhuM/3i0vVEt2e/7QQmnHQqw==" crossorigin="anonymous">
+    <!-- Дополнительные стили Bootstrap (не обязательно) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha512-iy8EXLW01a00b26BaqJWaCmk9fJ4PsMdgNRqV96KwMPSH+blO82OHzisF/zQbRIIi8m0PiO10dpS0QxrcXsisw==" crossorigin="anonymous">
+    <!-- jQuery (необходим для Bootstrap JS) -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha512-oBTprMeNEKCnqfuqKd6sbvFzmFQtlXS3e0C/RGFV0hD6QzhHV+ODfaQbAlmY6/q0ubbwlAM/nCJjkrgA3waLzg==" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div>
-        <span>
-            <h1>Нзвание статьи</h1>
-        </span>
-        <span>
-            <a href="/">Главная странца</a>
-            <a href="editArticle/{{slug}}">Редактировать статью</a>
-            <button>Удалить статью</button>
-        </span>
+{{#articles}}
+<div class="flex-container">
+    <input type="hidden" value="{{id}}" name="id">
+    <div class="flex-item item-1">
+            <span class="table-cell">
+                <a class="btn btn-primary" href="/">Главная страница</a>
+                <a class="btn btn-primary" href="/edit-article/{{slug}}">Редактировать</a>
+                <a class="btn btn-primary" href="/delete-article/{{id}}">Удалить</a>
+            </span>
     </div>
 
-    <form method="post" action="title">
-        {{#articles}}
-        <div>
-            <span type="text" name="title">{{title}}</span>
-            <span>{{description}}</span>
-            <span>{{slug}}</span>
-            <span>{{menuLabel}}</span>
-            <span>{{h1}}</span>
-            <span>{{content}}</span>
-            <span>{{priority}}</span>
-            <span>{{publishedAt}}</span>
-        </div>
-        {{/articles}}
-    </form>
-
-    {{#articles2}}
-    <div>
-        <span type="text" name="title">{{title}}</span>
-        <span>{{description}}</span>
-        <span>{{slug}}</span>
-        <span>{{menuLabel}}</span>
-        <span>{{h1}}</span>
-        <span>{{content}}</span>
-        <span>{{priority}}</span>
-        <span>{{publishedAt}}</span>
+    <div class="flex-item item-2">
+        <h1>{{h1}}</h1>
     </div>
-    {{/articles2}}
+
+    <div class="flex-item item-3">
+        {{content}}
+
+        Despite constitutional provisions against child labour, a large number of c
+
+    </div>
+
+    <div class="flex-item item-4">
+        <span id="priority">Приоритет: {{priority}}</span>
+        <span id="date">Дата публикации: {{publishedAt}}</span>
+    </div>
+
+</div>
+{{/articles}}
 </body>
 </html>

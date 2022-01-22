@@ -1,6 +1,7 @@
 package cms;
 
 import cms.domain.Article;
+import cms.domain.SorterByPriority;
 import cms.repository.ArcticleRepository;
 import cms.service.ArticleService;
 import org.springframework.stereotype.Controller;
@@ -50,22 +51,25 @@ public class MainController {
             }
         }
 
+        unpublishedList.sort(new SorterByPriority());
+        publishedList.sort(new SorterByPriority());
+
         model.put("publishedArticles", publishedList);
         model.put("unpublishedArticles", unpublishedList);
 
         return "index";
     }
 
-    @GetMapping("/newArticle")
+    @GetMapping("/new-article")
     public String newArticle(Map<String, Object> model) {
         Iterable<Article> articles = arcticleRepository.findAll();
 
         model.put("articles", articles);
 
-        return "newArticle";
+        return "new-article";
     }
 
-    @PostMapping("/newArticle")
+    @PostMapping("/new-article")
     public String addNewArticle (@RequestParam String title,
                        @RequestParam String description,
                        @RequestParam String slug,
@@ -79,7 +83,7 @@ public class MainController {
 
         arcticleRepository.save(article);
 
-        return "/newArticle";
+        return "new-article";
     }
 
     @GetMapping(value = "/{slug}")
@@ -91,7 +95,7 @@ public class MainController {
         return "article";
     }
 
-    @GetMapping(value = "/editArticle/{slug}")
+    @GetMapping(value = "/edit-article/{slug}")
     public String editArticle (@PathVariable(required = false) String slug,
                                Map<String, Object> model) {
         Iterable<Article> articles;
@@ -100,12 +104,19 @@ public class MainController {
         System.out.println(articles.toString());
 
         model.put("articles", articles);
-        return "editArticle";
+        return "edit-article";
     }
 
-    @PostMapping("/editArticle/{slug}")
+    @PostMapping("/edit-article/{slug}")
     public String saveEditArticle (Article article) {
         articleService.saveArticle(article);
+        return "redirect:/";
+    }
+
+    @GetMapping("/delete-article/{id}")
+    public String deleteArticle (@PathVariable(required = false) int id,
+                                 Map<String, Object> model) {
+        articleService.deleteArticle(id);
         return "redirect:/";
     }
 }
