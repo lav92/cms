@@ -23,6 +23,11 @@ a#publish {
     max-width: 100%;
     overflow: hidden;
 }
+a#unpublish {
+    min-width: 25%;
+    max-width: 100%;
+    overflow: hidden;
+}
 button {
     min-width: 25%;
     max-width: 100%;

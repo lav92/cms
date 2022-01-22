@@ -1,0 +1,24 @@
+    .flex-container {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        flex-basis: 100%;
+        width: 100%;
+    }
+
+    .flex-item {
+        padding: 10px;
+        border: 1px solid #08060a;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .item-3 {
+        flex-grow: 1;
+        text-align: justify;
+        padding: 1em;
+    }
+
+    span#date {
+        float: right;
+    }

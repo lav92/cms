@@ -15,9 +15,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" th:href ="/styles.css"/>
-    <link rel="stylesheet" type="text/css" href="styles.css"/>
-    <link rel="stylesheet" href="../static/css/styles.css">
+
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 <div class="flex-container">
@@ -36,8 +35,7 @@
             <div class="card card-body">
                 {{#unpublishedArticles}}
                 <div>
-                    <span><a  class="btn btn-primary" href="/{{slug}}" type="text" name="title">{{menuLabel}}</a></span>
-                    <span>Приоритет: {{priority}}</span>
+                    <span><a id="unpublish" class="btn btn-primary" href="/{{slug}}" type="text" name="title">{{menuLabel}}</a></span>
                 </div>
                 {{/unpublishedArticles}}
             </div>
@@ -52,7 +50,6 @@
             {{#publishedArticles}}
             <div>
                 <span><a id="publish" class="btn btn-primary" href="/{{slug}}" type="text" name="title">{{menuLabel}}</a></span>
-                <span>Приоритет: {{priority}}</span>
             </div>
             {{/publishedArticles}}
         </form>

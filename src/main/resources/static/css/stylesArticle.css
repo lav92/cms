@@ -1,0 +1,52 @@
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    flex-basis: 100%;
+}
+
+.table-row {
+    display:table-row
+}
+
+.table-cell {
+    display:table-cell;
+    padding-left:20px;
+    font-size:1.1em;
+    font-weight:600;
+    min-width:200px;
+    vertical-align:top
+}
+
+.flex-item {
+    padding: 10px;
+    color: rgb(13, 10, 31);
+    text-align: center;
+    align-items: center;
+    border: 1px solid #1e1c20;
+}
+
+.item-11 {
+    background-color: rgb(83, 131, 194);
+}
+
+.item-7 {
+    flex-grow: 1;
+}
+
+.table-cell textarea,
+.table-cell input {
+    border-radius:4px;
+    font-size:1.1em;
+    margin-top:5px;
+    width:990px;
+    height:30px;
+    padding:0px 10px;
+    border:1px solid gray
+}
+
+.table-cell textarea {
+    padding-left:10px;
+    border-radius:4px;
+    height:325px
+}
