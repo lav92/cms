@@ -19,19 +19,23 @@
 }
 
 a#publish {
-    min-width: 25%;
+    min-width: 40%;
     max-width: 100%;
     overflow: hidden;
 }
 a#unpublish {
-    min-width: 25%;
+    min-width: 40%;
     max-width: 100%;
     overflow: hidden;
 }
 button {
-    min-width: 25%;
+    min-width: 40%;
     max-width: 100%;
 }
 
-span#cms {
+span#prior {
+    min-width: 140px;
+}
+span#priorUn {
+    min-width: 140px;
 }

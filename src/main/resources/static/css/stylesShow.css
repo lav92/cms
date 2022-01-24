@@ -19,6 +19,6 @@
         padding: 1em;
     }
 
-    span#date {
+    span#published_at {
         float: right;
     }

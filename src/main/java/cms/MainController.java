@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.HtmlUtils;
+import org.unbescape.html.HtmlEscape;
 
 import java.sql.Date;
 import java.util.*;
 
 @Controller
-public class MainController {
+public class MainController extends HtmlUtils {
     private final ArcticleRepository arcticleRepository;
 
     private final ArticleService articleService;
@@ -24,14 +26,17 @@ public class MainController {
         this.articleService = articleService;
     }
 
+/*
+    получение списка опубликованных и не опубликованных статей
+*/
     @GetMapping("/")
     public String main(Map<String, Object> model) {
         Iterable<Article> publishedArticles;
         publishedArticles = arcticleRepository.findAll();
         Iterator<Article> iter = publishedArticles.iterator();
 
-        List <Article> list= new ArrayList<Article>();
-        List <Article> publishedList = new ArrayList<Article>();
+        List <Article> list= new ArrayList<>();
+        List <Article> publishedList = new ArrayList<>();
         List <Article> unpublishedList = new ArrayList<>();
 
         Calendar date = Calendar.getInstance();
@@ -51,6 +56,8 @@ public class MainController {
             }
         }
 
+//      сортировка по приоритету
+
         unpublishedList.sort(new SorterByPriority());
         publishedList.sort(new SorterByPriority());
 
@@ -59,7 +66,9 @@ public class MainController {
 
         return "index";
     }
-
+/*
+    создание новой статьи
+*/
     @GetMapping("/new-article")
     public String newArticle(Map<String, Object> model) {
         Iterable<Article> articles = arcticleRepository.findAll();
@@ -77,31 +86,35 @@ public class MainController {
                        @RequestParam String h1,
                        @RequestParam String content,
                        @RequestParam int priority,
-                       @RequestParam Date publishedAt,
-                       Map <String, Object> model) {
+                       @RequestParam Date publishedAt
+                       ) {
         Article article = new Article(title, description, slug, menuLabel, h1, content, priority, publishedAt);
 
         arcticleRepository.save(article);
 
         return "new-article";
     }
-
+/*
+    отображение статьи
+*/
     @GetMapping(value = "/{slug}")
     public String showArticle(@PathVariable(required = false) String slug,
                                 Map<String, Object> model) {
         Iterable<Article> articles;
         articles = arcticleRepository.findBySlug(slug);
         model.put("articles", articles);
+
         return "article";
     }
 
+/*
+    редактирование статьи
+*/
     @GetMapping(value = "/edit-article/{slug}")
     public String editArticle (@PathVariable(required = false) String slug,
                                Map<String, Object> model) {
         Iterable<Article> articles;
         articles = arcticleRepository.findBySlug(slug);
-
-        System.out.println(articles.toString());
 
         model.put("articles", articles);
         return "edit-article";
@@ -113,9 +126,11 @@ public class MainController {
         return "redirect:/";
     }
 
+/*
+    удаление статьи
+*/
     @GetMapping("/delete-article/{id}")
-    public String deleteArticle (@PathVariable(required = false) int id,
-                                 Map<String, Object> model) {
+    public String deleteArticle (@PathVariable(required = false) int id) {
         articleService.deleteArticle(id);
         return "redirect:/";
     }

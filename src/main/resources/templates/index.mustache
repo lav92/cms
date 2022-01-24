@@ -14,8 +14,6 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-
-
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
@@ -36,6 +34,7 @@
                 {{#unpublishedArticles}}
                 <div>
                     <span><a id="unpublish" class="btn btn-primary" href="/{{slug}}" type="text" name="title">{{menuLabel}}</a></span>
+                    <span id="priorUn" class="btn btn-primary">приоритет: {{priority}}</span>
                 </div>
                 {{/unpublishedArticles}}
             </div>
@@ -50,6 +49,7 @@
             {{#publishedArticles}}
             <div>
                 <span><a id="publish" class="btn btn-primary" href="/{{slug}}" type="text" name="title">{{menuLabel}}</a></span>
+                <span id="prior" class="btn btn-primary">Приоритет - {{priority}}</span>
             </div>
             {{/publishedArticles}}
         </form>
